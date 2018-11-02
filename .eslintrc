@@ -1,0 +1,17 @@
+{
+  "settings": {
+      "import/resolver": {
+        "webpack": {
+          "config": "webpack.config.js"
+        }
+      }
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  }
+}

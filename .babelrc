@@ -1,0 +1,21 @@
+{
+  "presets": [
+    ["es2015", {"modules": false}],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-decorators-legacy",
+    ["react-flow-props-to-prop-types", {
+      "resolveOpts": {
+        "moduleDirectory": ["node_modules", "src"]
+      }
+    }]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
+}
