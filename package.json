@@ -6,11 +6,26 @@
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress",
-    "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --ignore-path .gitignore --fix"
+    "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --ignore-path .gitignore --fix",
+    "test": "jest --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ],
+  "jest": {
+    "testRegex": "\\.test.js$",
+    "verbose": true,
+    "automock": false,
+    "roots": [
+      "./test/",
+      "./test/*/"
+    ],
+    "modulePaths": [
+      "node_modules",
+      "src"
+    ]
+  },
   "dependencies": {
     "@types/lodash": "^4.14.117",
     "@types/react": "^16.4.18",
@@ -41,11 +56,14 @@
     "awesome-typescript-loader": "^5.2.1",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.8.0",
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-import": "^2.14.0",
     "exports-loader": "^0.7.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "typescript": "^3.1.4",

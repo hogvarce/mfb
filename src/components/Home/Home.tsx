@@ -3,7 +3,6 @@ import { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import ListBooks from 'components/ListBooks';
 import { BookEntity } from 'models/BookEntity';
-import CacheManager from 'cache';
 
 import * as styles from './Home.styles';
 
@@ -18,8 +17,6 @@ class Home extends PureComponent<PropTypes> {
         const { getBooks } = this.props;
         getBooks();
     }
-
-    cache = new CacheManager();
 
     render() {
         const { books } = this.props;
