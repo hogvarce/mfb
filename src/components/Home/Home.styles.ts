@@ -1,14 +1,20 @@
-import { css } from 'emotion'
+import { css } from 'emotion';
 
-export const listItem = css`
+export const addBlock = css`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    margin: 20px auto;
 `;
 
-export const buttonLink = css`
-    padding: 5px 10px;
+export const add = css`
     background: #1473c3;
     color: white;
-    cursor: pointer;
+    padding: 10px 20px;
     border-radius: 5px;
+    outline: none;
+    &: hover {
+        text-decoration: none;
+        background: #28a745;
+        color: white;
+    }
 `;

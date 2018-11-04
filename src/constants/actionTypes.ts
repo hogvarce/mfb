@@ -1,3 +1,7 @@
 export const actionTypes = {
     FETCH_BOOKS_SUCCESS: 'FETCH_BOOKS_SUCCESS',
+    ADD_BOOK: 'ADD_BOOK',
+    REMOVE_BOOK: 'REMOVE_BOOK',
+    EDIT_BOOK: 'EDIT_BOOK',
+    GET_BOOK: 'GET_BOOK',
 };

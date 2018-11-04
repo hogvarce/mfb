@@ -1,6 +1,7 @@
 export interface BookEntity {
-    id: number;
+    id: string;
     title: string;
-    img_url: string;
+    img_url?: string;
     authors: string[];
+    year?: string,
 }

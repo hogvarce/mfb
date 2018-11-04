@@ -1,32 +1,35 @@
 import * as React from "react";
 import { PureComponent } from "react";
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import ListBooks from 'components/ListBooks';
 import { BookEntity } from 'models/BookEntity';
+import CacheManager from 'cache';
 
 import * as styles from './Home.styles';
 
-export interface HomeEntity {
+export interface PropTypes {
     books: BookEntity[];
     getBooks: () => void,
 }
 
-class Home extends PureComponent<HomeEntity> {
+
+class Home extends PureComponent<PropTypes> {
     componentDidMount () {
         const { getBooks } = this.props;
         getBooks();
     }
+
+    cache = new CacheManager();
+
     render() {
         const { books } = this.props;
         return (
-            <ListGroup>
-                {books.map(book => (
-                    <ListGroupItem key={book.id} className={styles.listItem}>
-                        <span>{book.title}</span>
-                        <Link to={`${book.id}`}><span className={styles.buttonLink}>Edit</span></Link>
-                    </ListGroupItem>
-                ))}
-            </ListGroup>
+            <div>
+                <div className={styles.addBlock}>
+                    <Link className={styles.add} to="/create">Add book</Link>
+                </div>
+                <ListBooks books={books} />
+            </div>
         );
     }
 }

@@ -33,6 +33,7 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js", ".json"],
         alias: {
             react: path.join(__dirname, 'node_modules', 'react'),
+            localforage: 'localforage/dist/localforage.js'
         },
     },
 
@@ -57,6 +58,13 @@ module.exports = {
                     'css-loader',
                 ],
             },
+            {
+                test: /localforage\/dist\/localforage.js/,
+                loader: 'exports?localforage',
+            }
+        ],
+        noParse: [
+            /localforage\/dist\/localforage.js/
         ]
     },
     // When importing a module whose path matches one of the following, just
@@ -70,7 +78,7 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
-            fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
+            fetch: 'exports-loader?self.fetch!whatwg-fetch/dist/fetch.umd',
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'index.html'),

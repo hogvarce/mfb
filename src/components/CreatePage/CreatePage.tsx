@@ -1,40 +1,28 @@
 import * as React from 'react';
 import FieldGroup from 'components/FieldGroup';
 import { Button } from 'react-bootstrap';
-import { set, isNil } from 'lodash';
+import { set } from 'lodash';
 import { BookEntity } from 'models/BookEntity';
 import BookPresenter from 'presenters/BookPresenter';
 
-interface PropsTypes {
-    id: string,
-    book: BookEntity,
-    editBook: (book:BookEntity) => Promise<any>,
-    getBook: (id: string) => void,
+interface Props {
+    addBook: (book:BookEntity) => Promise<any>,
     history: any,
 }
 
 interface StateTypes {
-    book: BookEntity | null,
+    book: BookEntity,
 }
 
-class CreatePage extends React.PureComponent<PropsTypes, StateTypes> {
-    componentDidMount() {
-        const { id, getBook } = this.props;
-        getBook(id);
-    }
+class CreatePage extends React.PureComponent<Props, StateTypes> {
     state = {
-        book: null,
+        book: {},
     };
-    componentWillReceiveProps(newProps: PropsTypes) {
-        this.setState({
-            book: newProps.book,
-        });
-    }
     onSubmit = (e: any) => {
         e.preventDefault();
-        const { editBook, history } = this.props;
+        const { addBook, history } = this.props;
         const { book } = this.state;
-        editBook(book).then(() => {
+        addBook(book).then(() => {
             history.push('/');
         });
     };
@@ -52,12 +40,9 @@ class CreatePage extends React.PureComponent<PropsTypes, StateTypes> {
     };
     render() {
         const { book } = this.state;
-        if (isNil(book)) {
-            return null;
-        }
         return (
             <div>
-                <h1>Edit book {book.title}</h1>
+                <h1>Create new book</h1>
                 <form onSubmit={this.onSubmit}>
                     <FieldGroup
                         id="id"
@@ -65,7 +50,7 @@ class CreatePage extends React.PureComponent<PropsTypes, StateTypes> {
                         label="ID"
                         placeholder="Enter id"
                         value={BookPresenter.id(book)}
-                        disabled
+                        onChange={this.onChangeField('id')}
                     />
                     <FieldGroup
                         id="title"
@@ -91,7 +76,7 @@ class CreatePage extends React.PureComponent<PropsTypes, StateTypes> {
                         value={BookPresenter.authors(book)}
                         onChange={this.onChangeField('authors')}
                     />
-                    <Button bsStyle="success" type="submit">Save book</Button>
+                    <Button bsStyle="success" type="submit">Create book</Button>
                 </form>
             </div>
         );
