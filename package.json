@@ -5,7 +5,7 @@
   "author": "anton <ganzhenko@restream.rt.ru>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack",
+    "start": "",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --ignore-path .gitignore --fix",
     "test": "jest --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill"
