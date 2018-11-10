@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "anton <ganzhenko@restream.rt.ru>",
   "license": "MIT",
+  "engines": {
+    "node": "10.3.0"
+  },
   "scripts": {
     "start": "node ./dist/server.js",
     "start:prod": "webpack",
