@@ -5,7 +5,7 @@
   "author": "anton <ganzhenko@restream.rt.ru>",
   "license": "MIT",
   "scripts": {
-    "start": "pm2 start",
+    "start": "node ./dist/server.js",
     "start:prod": "webpack",
     "start:server": "webpack --config ./webpack.config.server.js",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
