@@ -16,4 +16,4 @@ app.use(mount('/', serve(`${__dirname}/`)));
 app.use(views(__dirname, { extension: 'ejs' }));
 app.use(router.routes());
 
-app.listen(3000);
+app.listen(3000, '0.0.0.0');
