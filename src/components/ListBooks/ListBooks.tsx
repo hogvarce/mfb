@@ -11,7 +11,7 @@ export interface PropTypes {
 const ListBooks = ({ books }: PropTypes) => (
     <ListGroup>
         {books.map(book => (
-            <BookItem book={book} />
+            <BookItem book={book} key={book.id} />
         ))}
     </ListGroup>
 );

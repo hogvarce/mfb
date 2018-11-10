@@ -24,6 +24,7 @@ module.exports = {
         publicPath: '/',
         filename: 'bundle.js',
         historyApiFallback: true,
+        port: 3000,
     },
     resolve: {
         modules: [
